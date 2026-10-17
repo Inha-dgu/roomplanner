@@ -42,6 +42,23 @@ export function snapPosition(room, furniture, layout, movingId, x, y, threshold 
     );
   }
 
+  for (const pillar of room.obstacles.filter(o => o.type === "pillar")) {
+    xTargets.push(
+      pillar.x,
+      pillar.x + pillar.w,
+      pillar.x - width,
+      pillar.x + pillar.w - width,
+      pillar.x + (pillar.w - width) / 2
+    );
+    yTargets.push(
+      pillar.y,
+      pillar.y + pillar.d,
+      pillar.y - depth,
+      pillar.y + pillar.d - depth,
+      pillar.y + (pillar.d - depth) / 2
+    );
+  }
+
   const nearestTarget = (value, targets) => {
     let nearest = value;
     let distance = threshold;
