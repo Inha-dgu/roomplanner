@@ -1,6 +1,6 @@
 import { Component, useEffect, useState } from "react";
 import "./App.css";
-const API = import.meta.env.VITE_API || "http://127.0.0.1:8000";
+const API = (import.meta.env.VITE_API || "http://127.0.0.1:8000").replace(/\/+$/, "");
 import RoomCanvas from "./RoomCanvas";
 import LOCAL_ROOMS from "./rooms.json";
 
